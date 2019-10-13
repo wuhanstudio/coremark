@@ -110,6 +110,7 @@ ee_u32 default_num_contexts=1;
 */
 void portable_init(core_portable *p, int *argc, char *argv[])
 {
+	ee_printf("Benchmark started, please make sure it runs for at least 10s.");
 	if (sizeof(ee_ptr_int) != sizeof(ee_u8 *)) {
 		ee_printf("ERROR! Please define ee_ptr_int to a type that holds a pointer!\n");
 	}
@@ -125,5 +126,3 @@ void portable_fini(core_portable *p)
 {
 	p->portable_id=0;
 }
-
-
