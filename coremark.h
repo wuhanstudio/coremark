@@ -42,7 +42,11 @@ Original Author: Shay Gal-on
 #include <stdio.h>
 #endif
 #if HAS_PRINTF
+#if(HAS_FLOAT)
+#define ee_printf printf
+#else
 #define ee_printf rt_kprintf
+#endif
 #endif
 
 /* Actual benchmark execution in iterate */
