@@ -10,6 +10,6 @@ path    = [cwd + '/']
 
 LOCAL_CCFLAGS = ''
 
-group = DefineGroup('coremark', src, depend = [''], CPPPATH = path, LOCAL_CCFLAGS = LOCAL_CCFLAGS)
+group = DefineGroup('coremark', src, depend = ['PKG_USING_COREMARK'], CPPPATH = path, LOCAL_CCFLAGS = LOCAL_CCFLAGS)
 
 Return('group')
