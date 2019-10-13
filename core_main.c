@@ -86,11 +86,11 @@ char *mem_name[3] = {"Static","Heap","Stack"};
 */
 
 #if MAIN_HAS_NOARGC
-MAIN_RETURN_TYPE core_mark_main(void) {
+MAIN_RETURN_TYPE core_mark(void) {
 	int argc=0;
 	char *argv[1];
 #else
-MAIN_RETURN_TYPE core_mark_main(int argc, char *argv[]) {
+MAIN_RETURN_TYPE core_mark(int argc, char *argv[]) {
 #endif
 	ee_u16 i,j=0,num_algorithms=0;
 	ee_s16 known_id=-1,total_errors=0;
@@ -366,4 +366,4 @@ MAIN_RETURN_TYPE core_mark_main(int argc, char *argv[]) {
 
 	return MAIN_RETURN_VAL;	
 }
-MSH_CMD_EXPORT(core_mark_main, "Coremark")
+MSH_CMD_EXPORT(core_mark, "Coremark benchmark")
