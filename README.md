@@ -1,3 +1,79 @@
+# Coremark
+
+RT-Thread 上的 MCU/CPU 性能测试小工具，在 menuconfig 里选中软件包后，在 msh 中输入：
+
+```
+msh> core_mark
+```
+
+就可以看到跑分结果了，例如：
+
+### STM32F103RC (72MHZ) ARMCC -O3 -Otime 跑分 135:
+
+```
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.2 build Oct 13 2019
+ 2006 - 2019 Copyright by rt-thread team
+msh >
+msh >core_mark
+Benchmark started, please make sure it runs for at least 10s.
+
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 17776
+Total time (secs): 17.776000
+Iterations/Sec   : 135.013501
+Iterations       : 2400
+Compiler version : Please put compiler version here (e.g. gcc 4.1)
+Compiler flags   :
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0x382f
+Correct operation validated. See README.md for run and reporting rules.
+CoreMark 1.0 : 135.013501 / Please put compiler version here (e.g. gcc 4.1)  / STACK
+```
+
+### GD32VF103 (108MHz) GCC -Os 跑分 327:
+
+```
+ \ | /
+- RT -     Thread Operating System
+ / | \     4.0.2 build Oct 13 2019
+ 2006 - 2019 Copyright by rt-thread team
+msh >
+msh >core_mark
+Benchmark started, please make sure it runs for at least 10s.
+
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 1178
+Total time (secs): 11
+Iterations/Sec   : 327
+Iterations       : 3600
+Compiler version : GCC8.2.0
+Compiler flags   :
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0x4bfc
+Correct operation validated. See README.md for run and reporting rules.
+CoreMark 1.0 : 327 / GCC8.2.0  / STACK
+```
+
+## 注意事项
+
+- 如果结果希望以小数形式打印，默认会选择 libc 依赖
+- 测试程序需要运行至少 10s，如果 MCU 性能太强劲一下就结束了，可以适当增加图中的迭代次数
+
+![](./iteration.png)
+
+---------------------------
 
 # Introduction
 
@@ -6,7 +82,7 @@ CoreMark's primary goals are simplicity and providing a method for testing only 
 For a more compute-intensive version of CoreMark that uses larger datasets and execution loops taken from common applications, please check out EEMBC's [CoreMark-PRO](https://www.github.com/eembc/coremark-pro) benchmark, also on GitHub.
 
 # Building and Running
-	
+
 To build and run the benchmark, type 
 
 `> make`
