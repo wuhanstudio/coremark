@@ -66,6 +66,12 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 327 / GCC8.2.0  / STACK
 ```
 
+更多测试结果可以在这里看到：
+
+**https://www.eembc.org/coremark/scores.php**
+
+
+
 ## 注意事项
 
 - 如果结果希望以小数形式打印，默认会选择 libc 依赖
