@@ -8,7 +8,7 @@ msh> core_mark
 
 就可以看到跑分结果了，例如：
 
-### STM32F103RC (72MHZ) ARMCC -O3 -Otime 跑分 135:
+### STM32F103RC (72MHZ) Cortex-M3 ARMCC -O3 -Otime 跑分 135:
 
 ```
  \ | /
@@ -37,7 +37,7 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 135.013501 / Please put compiler version here (e.g. gcc 4.1)  / STACK
 ```
 
-### GD32VF103 (108MHz) GCC -Os 跑分 327:
+### GD32VF103 (108MHz) Cortex-M3 GCC -Os 跑分 327:
 
 ```
  \ | /
@@ -66,15 +66,70 @@ Correct operation validated. See README.md for run and reporting rules.
 CoreMark 1.0 : 327 / GCC8.2.0  / STACK
 ```
 
+### ZYNQ7020 (666MHz) Cortex-A9 GCC -O3 单核跑分 2571:
+
+```
+\ | /
+- RT -     Thread Operating System
+ / | \     4.0.3 build Nov 23 2020
+ 2006 - 2020 Copyright by rt-thread team
+msh />core_mark
+Benchmark started, please make sure it runs for at least 10s.
+
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 14333
+Total time (secs): 14
+Iterations/Sec   : 2571
+Iterations       : 36000
+Compiler version : GCC5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]
+Compiler flags   : 
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0xcc42
+Correct operation validated. See README.md for run and reporting rules.
+CoreMark 1.0 : 2571 / GCC5.4.1 20160919 (release) [ARM/embedded-5-branch revision 240496]  / STACK
+```
+
+### ZYNQ7045 (800MHz) Cortex-A9 GCC -O3 单核跑分 3000:
+
+```
+\ | /
+- RT -     Thread Operating System
+ / | \     4.0.3 build Nov 23 2020
+ 2006 - 2020 Copyright by rt-thread team
+msh />core_mark
+Benchmark started, please make sure it runs for at least 10s.
+
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 1251
+Total time (secs): 12
+Iterations/Sec   : 3000
+Iterations       : 36000
+Compiler version : GCC8.2.0
+Compiler flags   : 
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0xcc42
+Correct operation validated. See README.md for run and reporting rules.
+CoreMark 1.0 : 3000 / GCC8.2.0  / STACK
+```
+
 更多测试结果可以在这里看到：
 
 **https://www.eembc.org/coremark/scores.php**
 
-
-
 ## 注意事项
 
 - 如果结果希望以小数形式打印，默认会选择 libc 依赖
+- 使用编译器的不同优化等级可能会带来数倍差距的测试结果，例如 GCC O3 优化下的测试分可能会比 O0 优化下高 3-5 倍
 - 测试程序需要运行至少 10s，如果 MCU 性能太强劲一下就结束了，可以适当增加图中的迭代次数
 
 ![](./iteration.png)
